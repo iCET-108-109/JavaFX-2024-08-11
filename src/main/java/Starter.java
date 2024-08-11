@@ -12,7 +12,7 @@ public class Starter extends Application {
     public void start(Stage stage) throws Exception {
         stage.setScene(new Scene(FXMLLoader
                 .load(getClass()
-                        .getResource("view/add_customer_form.fxml"))));
+                        .getResource("view/dash_form.fxml"))));
         stage.show();
     }
 }
