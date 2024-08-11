@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXTextField;
+import db.DBConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import model.Customer;
@@ -21,22 +22,17 @@ public class AddCustomerFormController {
 
     @FXML
     private JFXTextField txtSalary;
-
-    List<Customer> customerList = new ArrayList<>();
     @FXML
     void btnAddCustomerOnAction() {
-        customerList.add(new Customer(
+        List<Customer> connection = DBConnection.getInstance().getConnection();
+        connection.add(new Customer(
                 txtId.getText(),
                 txtName.getText(),
                 txtAddress.getText(),
                 Double.parseDouble(txtSalary.getText())
         )
         );
-        System.out.println("----------------------------");
-        customerList.forEach(obj->{
-            System.out.println(obj);
-        });
-        System.out.println("----------------------------");
+
         clearTxt();
     }
 
@@ -49,4 +45,5 @@ public class AddCustomerFormController {
         txtAddress.clear();
         txtSalary.clear();
     }
+
 }
